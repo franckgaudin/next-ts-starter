@@ -1,19 +1,19 @@
 const withSass = require('@zeit/next-sass');
 const withCSS = require('@zeit/next-css');
 const withTM = require('next-transpile-modules');
-const compose = require('next-compose');
+const withPlugins = require('next-compose-plugins');
 
 const tmConfig = { transpileModules: [] };
 const sassConfig = {};
 const cssConfig = {};
 
-module.exports = compose([
-  [withSass, sassConfig],
-  [withCSS, cssConfig],
-  [withTM, tmConfig],
-  {
+const nextConfig = {
     webpack(config) {
       return config;
     },
-  },
-]);
+  };
+
+module.exports = compose(
+  [[withSass, sassConfig],[withCSS, cssConfig],[withTM, tmConfig]], 
+  nextConfig,
+);

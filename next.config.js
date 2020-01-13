@@ -8,12 +8,17 @@ const sassConfig = {};
 const cssConfig = {};
 
 const nextConfig = {
-    webpack(config) {
-      return config;
-    },
-  };
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  webpack(config) {
+    return config;
+  },
+};
 
-module.exports = compose(
-  [[withSass, sassConfig],[withCSS, cssConfig],[withTM, tmConfig]], 
+module.exports = withPlugins(
+  [
+    [withSass, sassConfig],
+    [withCSS, cssConfig],
+    [withTM, tmConfig],
+  ],
   nextConfig,
 );

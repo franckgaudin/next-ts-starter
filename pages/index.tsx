@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import './index.scss';
 
-const Home = () => (
+const Home = (): object => (
   <div>
     <Head>
       <title>Home</title>
